@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio - {{ tenant_name }}</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      color: #333;
+      background-color: #f9f9f9;
+      line-height: 1.6;
+    }
+
+    /* Encabezado */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #fff;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    /* Sección Hero */
+    .hero {
+      background-color: #e0f7fa;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #00796b;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    /* Productos Destacados */
+    .featured {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .featured h2 {
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .product-grid {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .product-card {
+      background-color: #fff;
+      padding: 15px;
+      border: 1px solid #eaeaea;
+      border-radius: 5px;
+      width: 200px;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      height: 150px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    /* Colores Pastel */
+    .pastel-blue {
+      background-color: #b3e5fc;
+    }
+
+    .pastel-pink {
+      background-color: #f8bbd0;
+    }
+
+    .pastel-green {
+      background-color: #c8e6c9;
+    }
+
+    /* Pie de página */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #fff;
+      border-top: 1px solid #eaeaea;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+    <header>
+      <div class="logo">{{ tenant_name }}</div>
+      <nav>
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+  
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Bienvenidos a {{ tenant_name }}</h1>
+        <p>Descubrí nuestra nueva colección</p>
+        <a href="#" class="btn">Ver más</a>
+      </div>
+    </section>
+  
+    <section class="featured">
+      <h2>Productos Destacados</h2>
+      <div class="product-grid">
+        {% for product in products %}
+        <div class="product-card">
+          <div class="image-placeholder {{ product.color }}"></div>
+          <h3>{{ product.name }}</h3>
+          <p>${{ product.price }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+  
+    <footer>
+      <p>&copy; 2025 {{ tenant_name }}. Todos los derechos reservados.</p>
+    </footer>
+  </body>
+  </html>
